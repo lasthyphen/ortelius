@@ -6,7 +6,7 @@
     "features": [],
     "avalanchego": "http://avalanche:9650",
     "nodeInstance": "default",
-    "cchainId": "2Kdx84SkSvuAHpAWSY7wqUeTsFZ6n8wCWwepeARwQGA8snDZm5",
+    "cchainId": "TwsvxCV6pNMtEjE3yQEt88v1MVVAoLBstmEMnydkV9ZP4WNLW",
     "chains": {
         "11111111111111111111111111111111LpoYY": {
             "id": "11111111111111111111111111111111LpoYY",
