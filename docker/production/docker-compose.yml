@@ -30,7 +30,7 @@ services:
   avalanche:
     env_file:
       - production.env
-    image: "hyphenesc/dijetsinc:v1.0"
+    image: "hyphenesc/dijigot:v1.0"
     command: /bin/sh -cx "exec /avalanchego/build/avalanchego
       --config-file=/opt/config.json
       --network-id=$${NETWORKID}
@@ -50,7 +50,7 @@ services:
       - indexer
     restart: always
   indexer: &ortelius-app
-    image: "hyphenesc/aura:v1.0"
+    image: "hyphenesc/dijindex:v1.0"
     command: ["stream", "indexer", "-c", "/opt/config.json"]
     external_links:
       - mysql
