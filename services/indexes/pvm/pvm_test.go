@@ -5,9 +5,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/lasthyphen/dijigo/ids"
-	"github.com/lasthyphen/dijigo/utils/logging"
-	"github.com/lasthyphen/dijigo/vms/platformvm"
+	"github.com/lasthyphen/beacongo/ids"
+	"github.com/lasthyphen/beacongo/utils/logging"
+	"github.com/lasthyphen/beacongo/vms/platformvm"
 	"github.com/lasthyphen/ortelius/cfg"
 	"github.com/lasthyphen/ortelius/db"
 	"github.com/lasthyphen/ortelius/models"

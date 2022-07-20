@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lasthyphen/dijigo/ids"
-	"github.com/lasthyphen/dijigo/utils/formatting"
+	"github.com/lasthyphen/beacongo/ids"
+	"github.com/lasthyphen/beacongo/utils/formatting"
 )
 
 func GetQueryInt(q url.Values, key string, defaultVal int) (val int, err error) {

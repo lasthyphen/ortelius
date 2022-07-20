@@ -15,7 +15,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/lasthyphen/dijigo/utils/logging"
+	"github.com/lasthyphen/beacongo/utils/logging"
 	"github.com/lasthyphen/ortelius/api"
 	"github.com/lasthyphen/ortelius/balance"
 	"github.com/lasthyphen/ortelius/cfg"

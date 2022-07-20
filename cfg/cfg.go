@@ -7,8 +7,8 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/lasthyphen/dijigo/utils/logging"
-	"github.com/lasthyphen/dijigo/version"
+	"github.com/lasthyphen/beacongo/utils/logging"
+	"github.com/lasthyphen/beacongo/version"
 )
 
 const appName = "ortelius"

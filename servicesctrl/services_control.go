@@ -6,8 +6,8 @@ package servicesctrl
 import (
 	"time"
 
-	avlancheGoUtils "github.com/lasthyphen/dijigo/utils"
-	"github.com/lasthyphen/dijigo/utils/logging"
+	avlancheGoUtils "github.com/lasthyphen/beacongo/utils"
+	"github.com/lasthyphen/beacongo/utils/logging"
 	"github.com/lasthyphen/ortelius/cfg"
 	"github.com/lasthyphen/ortelius/db"
 	"github.com/lasthyphen/ortelius/utils"

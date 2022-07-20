@@ -10,7 +10,7 @@ import (
 	"sync"
 	"time"
 
-	avlancheGoUtils "github.com/lasthyphen/dijigo/utils"
+	avlancheGoUtils "github.com/lasthyphen/beacongo/utils"
 	"github.com/lasthyphen/ortelius/cfg"
 	"github.com/lasthyphen/ortelius/db"
 	"github.com/lasthyphen/ortelius/services"

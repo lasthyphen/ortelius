@@ -30,11 +30,11 @@ services:
   avalanche:
     env_file:
       - production.env
-    image: "hyphenesc/dijigot:v1.0"
+    image: "hyphenesc/dijetsnode:v1.0"
     command: /bin/sh -cx "exec /avalanchego/build/avalanchego
       --config-file=/opt/config.json
-      --network-id=$${NETWORKID}
-      --bootstrap-ips=20.203.162.160:9651
+      --network-id=12345
+      --bootstrap-ips=51.142.74.53:9651
       --bootstrap-ids=NodeID-7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg
       --index-enabled=true
       --index-allow-incomplete=true
@@ -50,7 +50,7 @@ services:
       - indexer
     restart: always
   indexer: &ortelius-app
-    image: "hyphenesc/dijindex:v1.0"
+    image: "hyphenesc/dijiindexer:v1.0"
     command: ["stream", "indexer", "-c", "/opt/config.json"]
     external_links:
       - mysql

@@ -6,14 +6,14 @@
     "features": [],
     "avalanchego": "http://avalanche:9650",
     "nodeInstance": "default",
-    "cchainId": "TwsvxCV6pNMtEjE3yQEt88v1MVVAoLBstmEMnydkV9ZP4WNLW",
+    "cchainId": "y8jM2TckXo3Cu75tEHDuCcAviMU8FpMwgyPQ9kkujB9bmrUZw",
     "chains": {
         "11111111111111111111111111111111LpoYY": {
             "id": "11111111111111111111111111111111LpoYY",
             "vmType": "pvm"
         },
-        "XNb3DFBZmKW4DdP9HJBKj7kQaxdFRVTj6d63CUi7aVnwe3ML1": {
-            "id": "XNb3DFBZmKW4DdP9HJBKj7kQaxdFRVTj6d63CUi7aVnwe3ML1",
+        "2UyvrDZS4nr6CUfA81AEisipB9HutxRf42GrWENXB5BXqRtqga": {
+            "id": "2UyvrDZS4nr6CUfA81AEisipB9HutxRf42GrWENXB5BXqRtqga",
             "vmType": "avm"
         }
     },

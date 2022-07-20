@@ -6,7 +6,7 @@ package djtx
 import (
 	"context"
 
-	"github.com/lasthyphen/dijigo/ids"
+	"github.com/lasthyphen/beacongo/ids"
 	"github.com/lasthyphen/ortelius/cfg"
 	"github.com/lasthyphen/ortelius/models"
 	"github.com/lasthyphen/ortelius/services/indexes/params"

@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lasthyphen/dijigo/ids"
+	"github.com/lasthyphen/beacongo/ids"
 	"github.com/lasthyphen/ortelius/db"
 	"github.com/lasthyphen/ortelius/models"
 	"github.com/gocraft/dbr/v2"

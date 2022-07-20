@@ -7,9 +7,9 @@ import (
 	"encoding/json"
 	"strconv"
 
-	"github.com/lasthyphen/dijigo/ids"
-	"github.com/lasthyphen/dijigo/utils/constants"
-	"github.com/lasthyphen/dijigo/utils/formatting"
+	"github.com/lasthyphen/beacongo/ids"
+	"github.com/lasthyphen/beacongo/utils/constants"
+	"github.com/lasthyphen/beacongo/utils/formatting"
 )
 
 // Bech32HRP is the human-readable part of bech32 addresses. It needs to be

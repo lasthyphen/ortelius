@@ -6,7 +6,7 @@ package api
 import (
 	"encoding/json"
 
-	"github.com/lasthyphen/dijigo/ids"
+	"github.com/lasthyphen/beacongo/ids"
 	"github.com/lasthyphen/ortelius/models"
 )
 

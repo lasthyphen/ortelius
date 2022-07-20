@@ -7,7 +7,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/lasthyphen/dijigo/utils/wrappers"
+	"github.com/lasthyphen/beacongo/utils/wrappers"
 	"github.com/lasthyphen/ortelius/cfg"
 )
 

@@ -8,8 +8,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/lasthyphen/dijigo/ids"
-	"github.com/lasthyphen/dijigo/utils/hashing"
+	"github.com/lasthyphen/beacongo/ids"
+	"github.com/lasthyphen/beacongo/utils/hashing"
 	"github.com/lasthyphen/ortelius/models"
 	"github.com/lasthyphen/ortelius/utils"
 	"github.com/gocraft/dbr/v2"

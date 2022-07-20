@@ -6,7 +6,7 @@ package utils
 import (
 	"fmt"
 
-	"github.com/lasthyphen/dijigo/utils/logging"
+	"github.com/lasthyphen/beacongo/utils/logging"
 	"github.com/gocraft/dbr/v2"
 	"github.com/palantir/stacktrace"
 )

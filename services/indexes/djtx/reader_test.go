@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/lasthyphen/dijigo/utils/logging"
+	"github.com/lasthyphen/beacongo/utils/logging"
 	"github.com/lasthyphen/ortelius/cfg"
 	"github.com/lasthyphen/ortelius/db"
 	"github.com/lasthyphen/ortelius/models"

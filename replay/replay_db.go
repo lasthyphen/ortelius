@@ -13,8 +13,8 @@ import (
 
 	"github.com/lasthyphen/ortelius/db"
 
-	"github.com/lasthyphen/dijigo/ids"
-	avlancheGoUtils "github.com/lasthyphen/dijigo/utils"
+	"github.com/lasthyphen/beacongo/ids"
+	avlancheGoUtils "github.com/lasthyphen/beacongo/utils"
 	"github.com/lasthyphen/coreth/core/types"
 	"github.com/lasthyphen/ortelius/cfg"
 	"github.com/lasthyphen/ortelius/modelsc"

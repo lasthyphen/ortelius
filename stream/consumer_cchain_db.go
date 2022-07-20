@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/lasthyphen/dijigo/utils/hashing"
+	"github.com/lasthyphen/beacongo/utils/hashing"
 	"github.com/lasthyphen/coreth/core/types"
 	"github.com/lasthyphen/ortelius/cfg"
 	"github.com/lasthyphen/ortelius/db"

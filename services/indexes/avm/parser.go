@@ -4,8 +4,8 @@
 package avm
 
 import (
-	"github.com/lasthyphen/dijigo/codec"
-	"github.com/lasthyphen/dijigo/vms/avm"
+	"github.com/lasthyphen/beacongo/codec"
+	"github.com/lasthyphen/beacongo/vms/avm"
 )
 
 func parseTx(c codec.Manager, bytes []byte) (*avm.Tx, error) {

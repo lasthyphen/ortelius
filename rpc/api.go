@@ -7,7 +7,7 @@ import (
 	"runtime"
 	"runtime/pprof"
 
-	"github.com/lasthyphen/dijigo/utils/logging"
+	"github.com/lasthyphen/beacongo/utils/logging"
 )
 
 type SuccessResponse struct {

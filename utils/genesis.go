@@ -4,10 +4,10 @@
 package utils
 
 import (
-	"github.com/lasthyphen/dijigo/genesis"
-	"github.com/lasthyphen/dijigo/ids"
-	"github.com/lasthyphen/dijigo/utils/constants"
-	"github.com/lasthyphen/dijigo/vms/platformvm"
+	"github.com/lasthyphen/beacongo/genesis"
+	"github.com/lasthyphen/beacongo/ids"
+	"github.com/lasthyphen/beacongo/utils/constants"
+	"github.com/lasthyphen/beacongo/vms/platformvm"
 )
 
 type GenesisContainer struct {

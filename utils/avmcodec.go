@@ -6,13 +6,13 @@ package utils
 import (
 	"errors"
 
-	"github.com/lasthyphen/dijigo/codec"
-	"github.com/lasthyphen/dijigo/genesis"
-	"github.com/lasthyphen/dijigo/utils/constants"
-	"github.com/lasthyphen/dijigo/vms/avm"
-	"github.com/lasthyphen/dijigo/vms/nftfx"
-	"github.com/lasthyphen/dijigo/vms/platformvm"
-	"github.com/lasthyphen/dijigo/vms/secp256k1fx"
+	"github.com/lasthyphen/beacongo/codec"
+	"github.com/lasthyphen/beacongo/genesis"
+	"github.com/lasthyphen/beacongo/utils/constants"
+	"github.com/lasthyphen/beacongo/vms/avm"
+	"github.com/lasthyphen/beacongo/vms/nftfx"
+	"github.com/lasthyphen/beacongo/vms/platformvm"
+	"github.com/lasthyphen/beacongo/vms/secp256k1fx"
 )
 
 var (
