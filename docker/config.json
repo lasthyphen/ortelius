@@ -1,5 +1,5 @@
 {
-    "networkID": 1,
+    "networkID": 12345,
     "logDirectory": "/var/log/ortelius",
     "metricsListenAddr": "",
     "listenAddr": ":8080",
