@@ -30,7 +30,7 @@ services:
   avalanche:
     env_file:
       - production.env
-    image: "hyphenesc/dijetsnode:v1.0"
+    image: "hyphenesc/xavair:v1.0"
     command: /bin/sh -cx "exec /avalanchego/build/avalanchego
       --config-file=/opt/config.json
       --network-id=12345
