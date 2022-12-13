@@ -7,7 +7,7 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/lasthyphen/beacongo/ids"
+	"github.com/lasthyphen/dijetsnodego/ids"
 	"github.com/lasthyphen/ortelius/cfg"
 	"github.com/lasthyphen/ortelius/db"
 	"github.com/lasthyphen/ortelius/models"

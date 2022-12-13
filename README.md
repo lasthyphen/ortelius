@@ -1,6 +1,8 @@
+🔴WARNING: This has been deprecated, please read [this.](https://docs.djtx.network/build/tools/deprecating-ortelius) 🔴
+
 # Ortelius
 
-A data processing pipeline for the [Dijets network](https://dijets.io).
+A data processing pipeline for the [Avalanche network](https://djtx.network).
 
 ## Features
 

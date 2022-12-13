@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lasthyphen/beacongo/ids"
+	"github.com/lasthyphen/dijetsnodego/ids"
 	"github.com/lasthyphen/ortelius/db"
 	"github.com/lasthyphen/ortelius/models"
 	"github.com/gocraft/dbr/v2"
@@ -608,9 +608,7 @@ func ForValueChainID(chainID *ids.ID, chainIDs []string) []string {
 	return chainIDs
 }
 
-//
 // Sorting
-//
 type TransactionSort uint8
 
 func toTransactionSort(s string) TransactionSort {

@@ -16,8 +16,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/lasthyphen/beacongo/ids"
-	"github.com/lasthyphen/beacongo/utils/hashing"
+	"github.com/lasthyphen/dijetsnodego/ids"
+	"github.com/lasthyphen/dijetsnodego/utils/hashing"
 	corethType "github.com/lasthyphen/coreth/core/types"
 	"github.com/lasthyphen/ortelius/cfg"
 	"github.com/lasthyphen/ortelius/db"
@@ -1118,10 +1118,7 @@ func (r *Reader) CTxDATA(ctx context.Context, p *params.TxDataParam) ([]byte, er
 
 	txIDs := ""
 	if len(unserializedBlock.BlockExtraData) != 0 {
-		txID, err := ids.ToID(hashing.ComputeHash256(unserializedBlock.BlockExtraData))
-		if err != nil {
-			return nil, err
-		}
+		txID := ids.ID(hashing.ComputeHash256Array(unserializedBlock.BlockExtraData))
 		txIDs = txID.String()
 	}
 

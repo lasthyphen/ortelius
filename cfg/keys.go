@@ -23,7 +23,7 @@ const (
 	keysServicesDBDSN    = "dsn"
 	keysServicesDBRODSN  = "ro_dsn"
 
-	keysStreamProducerAvalanchego  = "avalanchego"
+	keysStreamProducerAvalanchego  = "dijetsnodego"
 	keysStreamProducerNodeInstance = "nodeInstance"
 
 	keysStreamProducerCchainID = "cchainID"

@@ -8,10 +8,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/lasthyphen/beacongo/ids"
-	"github.com/lasthyphen/beacongo/utils/logging"
-	avalancheGoDjtx "github.com/lasthyphen/beacongo/vms/components/djtx"
-	"github.com/lasthyphen/beacongo/vms/secp256k1fx"
+	"github.com/lasthyphen/dijetsnodego/ids"
+	"github.com/lasthyphen/dijetsnodego/utils/logging"
+	avalancheGoDjtx "github.com/lasthyphen/dijetsnodego/vms/components/djtx"
+	"github.com/lasthyphen/dijetsnodego/vms/secp256k1fx"
 	"github.com/lasthyphen/coreth/core/types"
 	"github.com/lasthyphen/coreth/plugin/evm"
 	"github.com/lasthyphen/ortelius/cfg"
@@ -27,7 +27,10 @@ var (
 )
 
 func newTestIndex(t *testing.T, networkID uint32, chainID ids.ID) (*utils.Connections, *Writer, func()) {
-	logConf := logging.DefaultConfig
+	logConf := logging.Config{
+		DisplayLevel: logging.Info,
+		LogLevel:     logging.Debug,
+	}
 
 	conf := cfg.Services{
 		Logging: logConf,

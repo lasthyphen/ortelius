@@ -5,9 +5,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/lasthyphen/beacongo/ids"
-	"github.com/lasthyphen/beacongo/utils/logging"
-	"github.com/lasthyphen/beacongo/vms/platformvm"
+	"github.com/lasthyphen/dijetsnodego/ids"
+	"github.com/lasthyphen/dijetsnodego/utils/logging"
+	"github.com/lasthyphen/dijetsnodego/vms/platformvm/blocks"
+	"github.com/lasthyphen/dijetsnodego/vms/platformvm/txs"
 	"github.com/lasthyphen/ortelius/cfg"
 	"github.com/lasthyphen/ortelius/db"
 	"github.com/lasthyphen/ortelius/models"
@@ -48,7 +49,10 @@ func TestBootstrap(t *testing.T) {
 }
 
 func newTestIndex(t *testing.T, networkID uint32, chainID ids.ID) (*utils.Connections, *Writer, *djtx.Reader, func()) {
-	logConf := logging.DefaultConfig
+	logConf := logging.Config{
+		DisplayLevel: logging.Info,
+		LogLevel:     logging.Debug,
+	}
 
 	conf := cfg.Services{
 		Logging: logConf,
@@ -82,9 +86,9 @@ func TestInsertTxInternal(t *testing.T) {
 	defer closeFn()
 	ctx := context.Background()
 
-	tx := platformvm.Tx{}
-	validatorTx := &platformvm.UnsignedAddValidatorTx{}
-	tx.UnsignedTx = validatorTx
+	tx := txs.Tx{}
+	validatorTx := &txs.AddValidatorTx{}
+	tx.Unsigned = validatorTx
 
 	persist := db.NewPersistMock()
 	session, _ := conns.DB().NewSession("test_tx", cfg.RequestTimeout)
@@ -109,9 +113,9 @@ func TestInsertTxInternalRewards(t *testing.T) {
 	defer closeFn()
 	ctx := context.Background()
 
-	tx := platformvm.Tx{}
-	validatorTx := &platformvm.UnsignedRewardValidatorTx{}
-	tx.UnsignedTx = validatorTx
+	tx := txs.Tx{}
+	validatorTx := &txs.RewardValidatorTx{}
+	tx.Unsigned = validatorTx
 
 	persist := db.NewPersistMock()
 	session, _ := conns.DB().NewSession("test_tx", cfg.RequestTimeout)
@@ -139,7 +143,7 @@ func TestCommonBlock(t *testing.T) {
 	defer closeFn()
 	ctx := context.Background()
 
-	tx := platformvm.CommonBlock{}
+	tx := blocks.CommonBlock{}
 	blkid := ids.ID{}
 
 	persist := db.NewPersistMock()

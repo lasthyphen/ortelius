@@ -9,11 +9,12 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/lasthyphen/beacongo/ids"
+	"github.com/lasthyphen/dijetsnodego/ids"
 	"github.com/lasthyphen/ortelius/cfg"
 	"github.com/lasthyphen/ortelius/services/indexes/params"
 	"github.com/lasthyphen/ortelius/utils"
 	"github.com/gocraft/web"
+	"go.uber.org/zap"
 )
 
 const DefaultOffsetLimit = 10000
@@ -75,7 +76,9 @@ func AddV2Routes(ctx *Context, router *web.Router, path string, indexBytes []byt
 	router.Subrouter(v2ctx, path).
 		Get("/", func(c *V2Context, resp web.ResponseWriter, _ *web.Request) {
 			if _, err := resp.Write(indexBytes); err != nil {
-				ctx.sc.Log.Info("resp write %v", err)
+				ctx.sc.Log.Warn("response write failed",
+					zap.Error(err),
+				)
 			}
 		}).
 
@@ -552,9 +555,7 @@ func (c *V2Context) GetAsset(w web.ResponseWriter, r *web.Request) {
 	})
 }
 
-//
 // PVM
-//
 func (c *V2Context) ListBlocks(w web.ResponseWriter, r *web.Request) {
 	collectors := utils.NewCollectors(
 		utils.NewCounterObserveMillisCollect(MetricMillis),

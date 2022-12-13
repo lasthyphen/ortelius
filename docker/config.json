@@ -1,26 +1,31 @@
 {
-    "networkID": 12345,
-    "logDirectory": "/var/log/ortelius",
-    "metricsListenAddr": "",
-    "listenAddr": ":8080",
-    "features": [],
-    "avalanchego": "http://avalanche:9650",
-    "nodeInstance": "default",
-    "cchainId": "2CA6j5zYzasynPsFeNoqWkmTCt3VScMvXUZHbfDJ8k3oGzAPtU",
-    "chains": {
-        "11111111111111111111111111111111LpoYY": {
-            "id": "11111111111111111111111111111111LpoYY",
-            "vmType": "pvm"
-        },
-        "2UyvrDZS4nr6CUfA81AEisipB9HutxRf42GrWENXB5BXqRtqga": {
-            "id": "2UyvrDZS4nr6CUfA81AEisipB9HutxRf42GrWENXB5BXqRtqga",
-            "vmType": "avm"
-        }
+  "networkID": 1,
+  "logDirectory": "/var/log/ortelius",
+  "metricsListenAddr": "",
+  "listenAddr": ":8080",
+  "features": [
+    "aggregate_cache",
+    "cchain_index",
+    "accumulate_balance_indexer",
+    "accumulate_balance_reader"
+  ],
+  "avalanchego": "http://avalanche:9650",
+  "nodeInstance": "default",
+  "cchainId": "28fJD1hMz2PSRJKJt7YT41urTPR37rUNUcdeJ8daoiwP6DGnAR",
+  "chains": {
+    "11111111111111111111111111111111LpoYY": {
+      "id": "11111111111111111111111111111111LpoYY",
+      "vmType": "pvm"
     },
-    "services": {
-        "db": {
-            "dsn": "root:password@tcp(mysql:3306)/ortelius",
-            "driver": "mysql"
-        }
+    "JmfxowrWkBZN2VKZw4Xiq4ZQ5WvvNb2e6pFfmExDuCQRQM9pD": {
+      "id": "JmfxowrWkBZN2VKZw4Xiq4ZQ5WvvNb2e6pFfmExDuCQRQM9pD",
+      "vmType": "avm"
     }
+  },
+  "services": {
+    "db": {
+      "dsn": "root:password@tcp(mysql:3306)/ortelius",
+      "driver": "mysql"
+    }
+  }
 }

@@ -11,9 +11,12 @@ import (
 	"time"
 
 	"github.com/lasthyphen/coreth/core/types"
+	"github.com/lasthyphen/coreth/eth/tracers"
 	"github.com/lasthyphen/coreth/ethclient"
 	"github.com/lasthyphen/coreth/interfaces"
 	"github.com/lasthyphen/coreth/rpc"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common/hexutil"
 )
 
 var ErrNotFound = errors.New("block not found")
@@ -25,6 +28,17 @@ type Block struct {
 	Version        uint32              `json:"version"`
 	BlockExtraData []byte              `json:"blockExtraData"`
 	Txs            []types.Transaction `json:"transactions,omitempty"`
+}
+
+type Call struct {
+	Type    string         `json:"type"`
+	From    common.Address `json:"from"`
+	To      common.Address `json:"to"`
+	Value   *hexutil.Big   `json:"value"`
+	GasUsed *hexutil.Big   `json:"gasUsed"`
+	Revert  bool           `json:"revert"`
+	Error   string         `json:"error,omitempty"`
+	Calls   []*Call        `json:"calls,omitempty"`
 }
 
 func New(bl *types.Block) (*Block, error) {
@@ -123,11 +137,6 @@ func (c *Client) Close() {
 	c.rpcClient.Close()
 }
 
-type TracerParam struct {
-	Tracer  string `json:"tracer"`
-	Timeout string `json:"timeout"`
-}
-
 type BlockContainer struct {
 	Block  *types.Block
 	Traces []*TransactionTrace
@@ -146,19 +155,26 @@ func (c *Client) ReadBlock(blockNumber *big.Int, rpcTimeout time.Duration) (*Blo
 		return nil, err
 	}
 
+	var (
+		tracer        = "callTracer"
+		tracerTimeout = "180s"
+	)
+
 	txTraces := make([]*TransactionTrace, 0, len(bl.Transactions()))
 	for _, tx := range bl.Transactions() {
 		txh := tx.Hash().Hex()
 		if !strings.HasPrefix(txh, "0x") {
 			txh = "0x" + txh
 		}
-		var results []interface{}
-		err = c.rpcClient.CallContext(ctx, &results, "debug_traceTransaction",
-			txh, TracerParam{Tracer: TracerJS, Timeout: "1m"})
-		if err != nil {
+		var results Call
+		args := &tracers.TraceConfig{
+			Timeout: &tracerTimeout,
+			Tracer:  &tracer,
+		}
+		if err := c.rpcClient.CallContext(ctx, &results, "debug_traceTransaction", txh, args); err != nil {
 			return nil, err
 		}
-		for ipos, result := range results {
+		for ipos, result := range results.Calls {
 			traceBits, err := json.Marshal(result)
 			if err != nil {
 				return nil, err

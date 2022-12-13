@@ -11,13 +11,14 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/lasthyphen/beacongo/ids"
+	"github.com/lasthyphen/dijetsnodego/ids"
 	"github.com/lasthyphen/ortelius/cfg"
 	"github.com/lasthyphen/ortelius/services/indexes/djtx"
 	"github.com/lasthyphen/ortelius/services/indexes/params"
 	"github.com/lasthyphen/ortelius/servicesctrl"
 	"github.com/lasthyphen/ortelius/utils"
 	"github.com/gocraft/web"
+	"go.uber.org/zap"
 )
 
 var (
@@ -79,7 +80,9 @@ func (c *Context) WriteCacheable(w http.ResponseWriter, cacheable utils.Cacheabl
 
 	// Write error or response
 	if err != nil {
-		c.sc.Log.Warn("server error %v", err)
+		c.sc.Log.Warn("server error",
+			zap.Error(err),
+		)
 		c.WriteErr(w, 500, ErrCacheableFnFailed)
 		return
 	}
@@ -94,7 +97,9 @@ func (c *Context) WriteErr(w http.ResponseWriter, code int, err error) {
 	})
 	if err != nil {
 		w.WriteHeader(500)
-		c.sc.Log.Warn("marshal %v", err)
+		c.sc.Log.Warn("marshal error",
+			zap.Error(err),
+		)
 		return
 	}
 

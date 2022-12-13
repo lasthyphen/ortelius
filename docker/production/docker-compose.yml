@@ -4,8 +4,6 @@ volumes:
 services:
   mysql:
     image: "mysql:8.0.26"
-    cap_add:
-      - SYS_NICE  # CAP_SYS_NICE
     volumes:
       - /var/lib/ortelius/mysql:/var/lib/mysql
       - ./../my.cnf:/etc/mysql/my.cnf
@@ -30,14 +28,10 @@ services:
   avalanche:
     env_file:
       - production.env
-    image: "hyphenesc/xavair:v1.0"
-    command: /bin/sh -cx "exec /avalanchego/build/avalanchego
+    image: "hyphenesc/phaser3:v1.0"
+    command: /bin/sh -cx "exec /dijetsnodego/build/dijetsnodego
       --config-file=/opt/config.json
-      --network-id=12345
-      --bootstrap-ips=51.142.74.53:9651
-      --bootstrap-ids=NodeID-7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg
-      --index-enabled=true
-      --index-allow-incomplete=true
+      --network-id=$${NETWORKID}
       "
     ports:
       - "9650:9650"
@@ -50,7 +44,7 @@ services:
       - indexer
     restart: always
   indexer: &ortelius-app
-    image: "hyphenesc/aleenaz:v1.0"
+    image: "hyphenesc/ionic:v1.0"
     command: ["stream", "indexer", "-c", "/opt/config.json"]
     external_links:
       - mysql

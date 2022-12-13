@@ -5,17 +5,19 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/lasthyphen/beacongo/api"
-	"github.com/lasthyphen/beacongo/ids"
-	"github.com/lasthyphen/beacongo/utils/formatting"
-	avalancheGoDjtx "github.com/lasthyphen/beacongo/vms/components/djtx"
-	"github.com/lasthyphen/beacongo/vms/platformvm"
+	"github.com/lasthyphen/dijetsnodego/api"
+	"github.com/lasthyphen/dijetsnodego/ids"
+	"github.com/lasthyphen/dijetsnodego/utils/formatting"
+	avalancheGoDjtx "github.com/lasthyphen/dijetsnodego/vms/components/djtx"
+	"github.com/lasthyphen/dijetsnodego/vms/platformvm"
+	"github.com/lasthyphen/dijetsnodego/vms/platformvm/txs"
 	"github.com/lasthyphen/ortelius/db"
 	"github.com/lasthyphen/ortelius/models"
 	"github.com/lasthyphen/ortelius/services"
 	"github.com/lasthyphen/ortelius/services/indexes/djtx"
 	"github.com/lasthyphen/ortelius/servicesctrl"
 	"github.com/lasthyphen/ortelius/utils"
+	"go.uber.org/zap"
 )
 
 type Handler struct {
@@ -70,7 +72,9 @@ func (r *Handler) runTicker(sc *servicesctrl.Control, conns *utils.Connections) 
 		case <-ticker.C:
 			err := r.processRewards()
 			if err != nil {
-				sc.Log.Error("process rewards %s", err)
+				sc.Log.Error("failed processing rewards",
+					zap.Error(err),
+				)
 			}
 		case <-r.doneCh:
 			return
@@ -162,7 +166,7 @@ func (r *Handler) processRewardUtxos(rewardsUtxos [][]byte, createdAt time.Time)
 
 	for _, reawrdUtxo := range rewardsUtxos {
 		var utxo *avalancheGoDjtx.UTXO
-		_, err = platformvm.Codec.Unmarshal(reawrdUtxo, &utxo)
+		_, err = txs.Codec.Unmarshal(reawrdUtxo, &utxo)
 		if err != nil {
 			return err
 		}

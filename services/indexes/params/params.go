@@ -9,7 +9,7 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/lasthyphen/beacongo/ids"
+	"github.com/lasthyphen/dijetsnodego/ids"
 	"github.com/gocraft/dbr/v2"
 )
 
@@ -78,9 +78,7 @@ func CacheKey(name string, val interface{}) string {
 	return fmt.Sprintf("%s=%v", name, val)
 }
 
-//
 // Global params
-//
 type ListParams struct {
 	Values url.Values
 	ID     *ids.ID

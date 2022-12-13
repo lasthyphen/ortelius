@@ -4,15 +4,15 @@
 package utils
 
 import (
-	"github.com/lasthyphen/beacongo/genesis"
-	"github.com/lasthyphen/beacongo/ids"
-	"github.com/lasthyphen/beacongo/utils/constants"
-	"github.com/lasthyphen/beacongo/vms/platformvm"
+	"github.com/lasthyphen/dijetsnodego/genesis"
+	"github.com/lasthyphen/dijetsnodego/ids"
+	"github.com/lasthyphen/dijetsnodego/utils/constants"
+	"github.com/lasthyphen/dijetsnodego/vms/platformvm/txs"
 )
 
 type GenesisContainer struct {
 	NetworkID       uint32
-	XChainGenesisTx *platformvm.Tx
+	XChainGenesisTx *txs.Tx
 	XChainID        ids.ID
 	DjtxAssetID     ids.ID
 	GenesisBytes    []byte

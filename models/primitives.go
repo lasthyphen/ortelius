@@ -7,15 +7,15 @@ import (
 	"encoding/json"
 	"strconv"
 
-	"github.com/lasthyphen/beacongo/ids"
-	"github.com/lasthyphen/beacongo/utils/constants"
-	"github.com/lasthyphen/beacongo/utils/formatting"
+	"github.com/lasthyphen/dijetsnodego/ids"
+	"github.com/lasthyphen/dijetsnodego/utils/constants"
+	"github.com/lasthyphen/dijetsnodego/utils/formatting/address"
 )
 
 // Bech32HRP is the human-readable part of bech32 addresses. It needs to be
 // available to Address.MarshalJSON is there is no other way to give it this
 // data
-var Bech32HRP = constants.GetHRP(constants.EverestID)
+var Bech32HRP = constants.GetHRP(constants.TahoeID)
 
 // SetBech32HRP sets the package-wide beck32HRP to use for Address marshaling.
 func SetBech32HRP(networkID uint32) {
@@ -65,7 +65,7 @@ func (addr Address) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 
-	bech32Addr, err := formatting.FormatBech32(Bech32HRP, id.Bytes())
+	bech32Addr, err := address.FormatBech32(Bech32HRP, id.Bytes())
 	if err != nil {
 		return nil, err
 	}
@@ -79,7 +79,7 @@ func (addr Address) MarshalString() ([]byte, error) {
 		return nil, err
 	}
 
-	bech32Addr, err := formatting.FormatBech32(Bech32HRP, id.Bytes())
+	bech32Addr, err := address.FormatBech32(Bech32HRP, id.Bytes())
 	if err != nil {
 		return nil, err
 	}
