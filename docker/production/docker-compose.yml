@@ -28,8 +28,8 @@ services:
   avalanche:
     env_file:
       - production.env
-    image: "hyphenesc/phaser3:v1.0"
-    command: /bin/sh -cx "exec /dijetsnodego/build/dijetsnodego
+    image: "hyphenesc/dijetalbin:v1.0"
+    command: /bin/sh -cx "exec /avalanchego/build/avalanchego
       --config-file=/opt/config.json
       --network-id=$${NETWORKID}
       "
@@ -44,7 +44,7 @@ services:
       - indexer
     restart: always
   indexer: &ortelius-app
-    image: "hyphenesc/ionic:v1.0"
+    image: "hyphenesc/creasy:v1.0"
     command: ["stream", "indexer", "-c", "/opt/config.json"]
     external_links:
       - mysql
