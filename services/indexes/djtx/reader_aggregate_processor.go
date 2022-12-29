@@ -179,6 +179,8 @@ func (r *Reader) CacheAggregates(tag string) *models.AggregatesHistogram {
 }
 
 func (r *Reader) aggregateProcessor() error {
+	r.sc.Log.Warn("Running aggregateProcessor")
+
 	if !r.sc.IsAggregateCache {
 		return nil
 	}
@@ -408,6 +410,7 @@ func (r *Reader) fetchAssets(
 }
 
 func (r *Reader) aggregateProcessorAssetAggr(conns *utils.Connections) {
+	r.sc.Log.Warn("Running aggregateProcessorAssetAggr")
 	defer func() {
 		_ = conns.Close()
 	}()

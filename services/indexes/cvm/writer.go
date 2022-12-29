@@ -50,7 +50,7 @@ func NewWriter(networkID uint32, chainID string) (*Writer, error) {
 	}
 
 	ap5Activation := version.GetApricotPhase5Time(networkID).Unix()
-	banffActivation := version.GetApricotPhase5Time(networkID).Unix()
+	banffActivation := version.GetBanffTime(networkID).Unix()
 
 	return &Writer{
 		networkID:       networkID,

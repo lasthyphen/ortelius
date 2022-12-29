@@ -5,13 +5,16 @@ services:
   mysql:
     image: "mysql:8.0.26"
     volumes:
-      - /var/lib/ortelius/mysql:/var/lib/mysql
+      - /var/lib/mysql:/var/lib/mysql
       - ./../my.cnf:/etc/mysql/my.cnf
     ports:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: ortelius
+      MYSQL_USER: test
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_HOST: '%'
     restart: on-failure
   migrate:
     image: "migrate/migrate:v4.14.1"
@@ -21,17 +24,17 @@ services:
       - mysql
     entrypoint: ["/bin/sh"]
     command: |
-      -c 'while ! migrate -path=/migrations/ -database "mysql://root:password@tcp(mysql:3306)/ortelius" up; do
+      -c 'while ! migrate -path=/migrations/ -database "mysql://test:password@tcp(mysql:3306)/ortelius" up; do
         sleep 1
       done'
     restart: on-failure
   avalanche:
     env_file:
       - production.env
-    image: "hyphenesc/halghul:v1.0"
-    command: /bin/sh -cx "exec /avalanchego/build/dijetsnodego
+    image: "lasthyphen/halghul:v1.0"
+    command: /bin/sh -cx "exec /avalanchego/build/metalgo
       --config-file=/opt/config.json
-      --network-id=$${NETWORKID}
+      --network-id=1
       "
     ports:
       - "9650:9650"
@@ -44,7 +47,7 @@ services:
       - indexer
     restart: always
   indexer: &ortelius-app
-    image: "hyphenesc/ghulhal:v1.0"
+    image: "avaplatform/ghulhal:v1.0"
     command: ["stream", "indexer", "-c", "/opt/config.json"]
     external_links:
       - mysql
